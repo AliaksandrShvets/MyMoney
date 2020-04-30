@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="categoryIcon"
+            type="com.goodsoft.mymoney.implementations.main.categories.editor.CategoryIconItem" />
+
+        <variable
+            name="listener"
+            type="com.goodsoft.mymoney.core.OnItemClickListener" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_category_selector"
+            android:contentDescription="@string/menu_main_categories"
+            android:onClick="@{(view) -> listener.onClick(categoryIcon)}"
+            android:padding="16dp"
+            android:src="@{context.getDrawable(categoryIcon.categoryIcon.iconRes)}"
+            android:tint="@color/colorPrimary"
+            app:isSelected="@{categoryIcon.isChecked()}"
+            tools:src="@drawable/ic_category_flower" />
+    </FrameLayout>
+</layout>

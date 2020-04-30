@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.goodsoft.mymoney.implementations.main.main.MainFragment"
+        android:label="Main"
+        tools:layout="@layout/fragment_main"/>
+
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.goodsoft.mymoney.implementations.main.categories.CategoriesFragment"
+        android:label="Categories"
+        tools:layout="@layout/fragment_categories" />
+
+    <fragment
+        android:id="@+id/accountsFragment"
+        android:name="com.goodsoft.mymoney.implementations.main.accounts.AccountsFragment"
+        android:label="Accounts"
+        tools:layout="@layout/fragment_accounts" />
+
+    <fragment
+        android:id="@+id/smsParsersFragment"
+        android:name="com.goodsoft.mymoney.implementations.main.sms.SmsParsersFragment"
+        android:label="SmsParsers"
+        tools:layout="@layout/fragment_sms_parsers" />
+
+</navigation>

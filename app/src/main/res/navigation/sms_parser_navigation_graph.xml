@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sms_parser_navigation_graph"
+    app:startDestination="@id/smsListFragment">
+
+    <fragment
+        android:id="@+id/smsListFragment"
+        android:name="com.goodsoft.mymoney.implementations.sms.list.SmsListFragment"
+        android:label="SmsListFragment"
+        tools:layout="@layout/fragment_sms_list">
+
+        <!--app:nullable="true"-->
+        <argument
+            android:name="sms"
+            app:argType="com.goodsoft.mymoney.implementations.sms.parser.SmsEntity" />
+
+        <action
+            android:id="@+id/action_smsListFragment_to_smsParserCreationFragment"
+            app:destination="@+id/smsParserCreationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/smsParserCreationFragment"
+        android:name="com.goodsoft.mymoney.implementations.sms.parser.SmsParserCreationFragment"
+        android:label="SmsParserCreationFragment"
+        tools:layout="@layout/fragment_sms_parser_creation" />
+</navigation>

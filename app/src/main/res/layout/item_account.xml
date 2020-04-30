@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="accountItem"
+            type="com.goodsoft.mymoney.implementations.main.accounts.AccountItem" />
+
+        <variable
+            name="listener"
+            type="com.goodsoft.mymoney.core.OnItemClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:contentDescription="@string/menu_main_categories"
+            android:padding="16dp"
+            android:src="@{context.getDrawable(accountItem.icon)}"
+            android:tint="@color/colorPrimary"
+            tools:src="@drawable/ic_account_pound" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:text="@{accountItem.name}"
+                android:textColor="@color/colorPrimary"
+                tools:text="Наличные" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:text="@{accountItem.currency}"
+                android:textColor="@color/colorPrimary"
+                android:alpha="0.6"
+                tools:text="RUB" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="@{(view) -> listener.onMenuClick(view, accountItem)}"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:src="@drawable/ic_more"
+            app:tint="@color/colorPrimary" />
+    </LinearLayout>
+</layout>

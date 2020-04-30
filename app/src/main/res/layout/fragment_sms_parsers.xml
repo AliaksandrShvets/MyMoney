@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.goodsoft.mymoney.database.parsers.SmsParserEntity" />
+
+        <variable
+            name="itemBinding"
+            type="me.tatarka.bindingcollectionadapter2.ItemBinding&lt;SmsParserEntity&gt;" />
+
+        <variable
+            name="viewModel"
+            type="com.goodsoft.mymoney.implementations.main.sms.SmsParsersViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/recycler_padding"
+            android:paddingBottom="@dimen/recycler_padding_bottom_for_fab"
+            app:isVisible="@{!viewModel.smsParserItems.isEmpty()}"
+            app:itemBinding="@{itemBinding}"
+            app:items="@{viewModel.smsParserItems}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/item_sms_parser" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/create"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_add"
+            android:tintMode="@color/white"
+            app:backgroundTint="@color/colorAccent" />
+    </FrameLayout>
+</layout>

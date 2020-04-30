@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">MyMoney</string>
+
+    <!-- Actions -->
+    <string name="action_add">Добавить</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_apply">Применить</string>
+    <string name="action_edit">Редактировать</string>
+    <string name="action_delete">Удалить</string>
+    <string name="action_close">Закрыть</string>
+
+    <!-- Date formats -->
+    <string name="simple_date_format">%s %s %s</string>
+
+    <!-- Menu Main -->
+    <string name="menu_main_home">Главная</string>
+    <string name="menu_main_categories">Категории</string>
+    <string name="menu_main_accounts">Счета</string>
+    <string name="menu_main_sms_parser">Обработчики СМС</string>
+    <string name="menu_main_history">История</string>
+    <string name="menu_main_settings">Настройки</string>
+
+    <!-- Activity Transaction  -->
+    <string name="transition_title">Создание транзакции</string>
+    <string name="transition_income_title">Добавление дохода</string>
+    <string name="transition_outcome_title">Добавление расхода</string>
+    <string name="date_create_transaction">Дата проведения транзакции</string>
+    <string name="sum_transaction">Сумма</string>
+
+    <!-- Activity SmsParserCreator -->
+    <string name="activity_sms_parser_creator_title">Создание обработчика СМС</string>
+
+    <!-- BottomSheetCategories -->
+    <string name="bottom_sheet_category_title_add">Добавление категории</string>
+    <string name="bottom_sheet_category_title_edit">Редактирование категории</string>
+    <string name="bottom_sheet_category_name_hint">Наменование категории</string>
+    <string name="bottom_sheet_category_name_error">Введите наменование категории</string>
+
+    <!-- BottomSheetSmsList -->
+    <string name="bottom_sheet_sms_list_title">Список смс</string>
+    <string name="bottom_sheet_sms_list_address_hint">Отправитель</string>
+    <string name="bottom_sheet_sms_list_body_hint">Отправитель</string>
+
+    <!-- Fragment Main -->
+    <string name="fragment_main_empty_list_title">Список операций пуст</string>
+    <string name="fragment_main_empty_list_text">Добавьте новую операцию и она будет показана здесь</string>
+    <string name="fragment_main_popular">Популярные</string>
+
+    <!-- Fragment Main -->
+    <string name="fragment_sms_parser_creation_sms_template">Шаблон сообщения</string>
+    <string name="fragment_sms_parser_creation_amount_hint">Сумма</string>
+    <string name="fragment_sms_parser_creation_date_hint">Дата</string>
+    <string name="fragment_sms_parser_creation_group_hint">Группа</string>
+
+</resources>

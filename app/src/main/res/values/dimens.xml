@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_gap">8dp</dimen>
+    <dimen name="normal_gap">16dp</dimen>
+    <dimen name="big_gap">32dp</dimen>
+    <dimen name="small_radius">8dp</dimen>
+    <dimen name="normal_radius">16dp</dimen>
+    <dimen name="recycler_padding">16dp</dimen>
+    <dimen name="recycler_padding_bottom_for_fab">88dp</dimen>
+</resources>

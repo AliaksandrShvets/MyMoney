@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class=".SmsListBottomSheetBinding">
+
+        <import type="com.goodsoft.mymoney.implementations.sms.parser.SmsEntity" />
+
+        <variable
+            name="itemBinding"
+            type="me.tatarka.bindingcollectionadapter2.ItemBinding&lt;SmsEntity&gt;" />
+
+
+        <variable
+            name="viewModel"
+            type="com.goodsoft.mymoney.implementations.sms.list.SmsListViewModel" />
+    </data>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:itemBinding="@{itemBinding}"
+        app:items="@{viewModel.items}"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_sms" />
+</layout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menuMain"
+            android:title="@string/menu_main_home"/>
+
+        <item
+            android:id="@+id/menuCategories"
+            android:title="@string/menu_main_categories"/>
+
+        <item
+            android:id="@+id/menuAccounts"
+            android:title="@string/menu_main_accounts"/>
+
+        <item
+            android:id="@+id/menuSmsParser"
+            android:title="@string/menu_main_sms_parser"/>
+
+        <item
+            android:id="@+id/menuHistory"
+            android:title="@string/menu_main_history"/>
+
+        <item
+            android:id="@+id/menuSettings"
+            android:title="@string/menu_main_settings"/>
+    </group>
+</menu>

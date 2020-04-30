@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="smsItem"
+            type="com.goodsoft.mymoney.implementations.sms.parser.SmsEntity" />
+
+        <variable
+            name="listener"
+            type="com.goodsoft.mymoney.core.OnItemClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:onClick="@{() -> listener.onClick(smsItem)}"
+        android:orientation="vertical"
+        android:padding="@dimen/normal_gap">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@{smsItem.address}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/colorPrimary"
+            tools:text="Some Bank" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.6"
+            android:text="@{smsItem.body}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textColor="@color/colorPrimary"
+            tools:text="Card9977; Oplata: 22,00 BYN; 17.10.19 21:04:21; HERO PARK,MINSK,BLR; Dostupno: 9 828,49 BYN" />
+    </LinearLayout>
+</layout>
