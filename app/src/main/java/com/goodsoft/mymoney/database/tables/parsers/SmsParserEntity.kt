@@ -1,4 +1,4 @@
-package com.goodsoft.mymoney.database.parsers
+package com.goodsoft.mymoney.database.tables.parsers
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

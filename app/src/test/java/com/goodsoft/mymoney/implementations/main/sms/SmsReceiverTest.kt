@@ -1,7 +1,6 @@
 package com.goodsoft.mymoney.implementations.main.sms
 
-import com.goodsoft.mymoney.database.parsers.SmsParserEntity
-import com.goodsoft.mymoney.implementations.sms.parser.SmsEntity
+import com.goodsoft.mymoney.database.tables.parsers.SmsParserEntity
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

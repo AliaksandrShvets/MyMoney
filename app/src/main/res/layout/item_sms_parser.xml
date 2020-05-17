@@ -7,7 +7,7 @@
 
         <variable
             name="smsParserItem"
-            type="com.goodsoft.mymoney.database.parsers.SmsParserEntity" />
+            type="com.goodsoft.mymoney.database.tables.parsers.SmsParserEntity" />
 
         <variable
             name="listener"

@@ -1,4 +1,4 @@
-package com.goodsoft.mymoney.database.parsers
+package com.goodsoft.mymoney.database.tables.parsers
 
 import io.reactivex.Completable
 import kotlinx.coroutines.flow.Flow

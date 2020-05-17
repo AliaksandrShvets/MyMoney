@@ -19,8 +19,8 @@ import androidx.navigation.fragment.navArgs
 import com.goodsoft.mymoney.R
 import com.goodsoft.mymoney.SmsParserCreationFragmentBinding
 import com.goodsoft.mymoney.core.checkPermissions
-import com.goodsoft.mymoney.database.parsers.SmsParserEntity
-import com.goodsoft.mymoney.database.parsers.SmsParsersRoomRepository
+import com.goodsoft.mymoney.database.tables.parsers.SmsParserEntity
+import com.goodsoft.mymoney.database.tables.parsers.SmsParsersRoomRepository
 import com.goodsoft.mymoney.enums.SmsParameterEnum
 import com.goodsoft.mymoney.implementations.sms.list.SmsListFragment
 import com.goodsoft.mymoney.implementations.sms.list.SmsListFragmentArgs

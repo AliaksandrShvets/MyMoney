@@ -1,7 +1,7 @@
 package com.goodsoft.mymoney.implementations.main.categories
 
 import androidx.annotation.DrawableRes
-import com.goodsoft.mymoney.database.categories.CategoryEntity
+import com.goodsoft.mymoney.database.tables.categories.CategoryEntity
 
 
 data class CategoryItem(

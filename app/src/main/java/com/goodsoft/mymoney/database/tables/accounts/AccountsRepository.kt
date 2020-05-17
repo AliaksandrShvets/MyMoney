@@ -1,4 +1,4 @@
-package com.goodsoft.mymoney.database.accounts
+package com.goodsoft.mymoney.database.tables.accounts
 
 import io.reactivex.Completable
 import io.reactivex.Observable

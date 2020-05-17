@@ -1,4 +1,4 @@
-package com.goodsoft.mymoney.database.categories
+package com.goodsoft.mymoney.database.tables.categories
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

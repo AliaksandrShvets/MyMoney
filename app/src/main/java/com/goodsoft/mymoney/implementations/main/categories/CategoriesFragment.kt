@@ -12,8 +12,8 @@ import androidx.fragment.app.viewModels
 import com.goodsoft.mymoney.CategoriesFragmentBinding
 import com.goodsoft.mymoney.R
 import com.goodsoft.mymoney.core.createItemBinding
-import com.goodsoft.mymoney.database.categories.CategoryEntity
-import com.goodsoft.mymoney.database.categories.CategoriesRoomRepository
+import com.goodsoft.mymoney.database.tables.categories.CategoryEntity
+import com.goodsoft.mymoney.database.tables.categories.CategoriesRoomRepository
 import com.goodsoft.mymoney.implementations.main.categories.editor.CategoryBottomSheet
 
 

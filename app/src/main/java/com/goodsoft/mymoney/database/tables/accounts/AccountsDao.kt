@@ -1,4 +1,4 @@
-package com.goodsoft.mymoney.database.accounts
+package com.goodsoft.mymoney.database.tables.accounts
 
 import androidx.room.*
 import io.reactivex.Completable

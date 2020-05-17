@@ -4,8 +4,8 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.DiffUtil
-import com.goodsoft.mymoney.database.parsers.SmsParsersRoomRepository
-import com.goodsoft.mymoney.database.parsers.SmsParserEntity
+import com.goodsoft.mymoney.database.tables.parsers.SmsParsersRoomRepository
+import com.goodsoft.mymoney.database.tables.parsers.SmsParserEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

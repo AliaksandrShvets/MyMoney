@@ -7,10 +7,10 @@ import android.content.Intent
 import android.provider.Telephony
 import android.telephony.SmsMessage
 import android.widget.Toast
-import com.goodsoft.mymoney.database.categories.CategoriesRoomRepository
-import com.goodsoft.mymoney.database.categories.CategoryEntity
-import com.goodsoft.mymoney.database.parsers.SmsParserEntity
-import com.goodsoft.mymoney.database.parsers.SmsParsersRoomRepository
+import com.goodsoft.mymoney.database.tables.categories.CategoriesRoomRepository
+import com.goodsoft.mymoney.database.tables.categories.CategoryEntity
+import com.goodsoft.mymoney.database.tables.parsers.SmsParserEntity
+import com.goodsoft.mymoney.database.tables.parsers.SmsParsersRoomRepository
 import com.goodsoft.mymoney.enums.CategoryIcon
 import com.goodsoft.mymoney.enums.SmsParameterEnum
 import com.goodsoft.mymoney.implementations.sms.parser.ExpressionEntity

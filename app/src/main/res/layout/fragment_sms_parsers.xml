@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.goodsoft.mymoney.database.parsers.SmsParserEntity" />
+        <import type="com.goodsoft.mymoney.database.tables.parsers.SmsParserEntity" />
 
         <variable
             name="itemBinding"

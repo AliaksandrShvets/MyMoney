@@ -4,11 +4,14 @@ import android.app.DatePickerDialog
 import android.content.Context
 import java.util.*
 
+
 fun generateDatePickerDialog(
         context: Context,
-        listener: DatePickerDialog.OnDateSetListener
+        listener: DatePickerDialog.OnDateSetListener,
+        date: Date? = null
 ) : DatePickerDialog {
     val calendar = Calendar.getInstance()
+    date?.let { calendar.time = it }
     return DatePickerDialog(
             context,
             listener,

@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">MyMoney</string>
 
+    <!-- Tools -->
+    <string name="tools_date" translatable="false">29.01.1994</string>
+    <string name="tools_number" translatable="false">29</string>
+    <string name="tools_amount" translatable="false">1994$</string>
+    <string name="tools_category" translatable="false">Категория</string>
+
     <!-- Actions -->
     <string name="action_add">Добавить</string>
     <string name="action_save">Сохранить</string>

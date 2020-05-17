@@ -1,4 +1,4 @@
-package com.goodsoft.mymoney.database.accounts
+package com.goodsoft.mymoney.database.tables.accounts
 
 import com.goodsoft.mymoney.App
 import io.reactivex.Observable
@@ -8,7 +8,7 @@ import io.reactivex.schedulers.Schedulers
 
 class AccountsRoomRepository : AccountsRepository {
 
-    private val accountsDao: AccountsDao = App.dataBase.accountDao()
+    private val accountsDao: AccountsDao = App.dataBase.accountsDao()
 
     override fun getAccounts(): Observable<List<AccountEntity>> = accountsDao.getAll()
         .subscribeOn(Schedulers.io())

@@ -28,5 +28,4 @@
         android:name="com.goodsoft.mymoney.implementations.main.sms.SmsParsersFragment"
         android:label="SmsParsers"
         tools:layout="@layout/fragment_sms_parsers" />
-
 </navigation>

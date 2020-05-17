@@ -1,4 +1,4 @@
-package com.goodsoft.mymoney.database.categories
+package com.goodsoft.mymoney.database.tables.categories
 
 import com.goodsoft.mymoney.App
 import io.reactivex.Observable
@@ -8,7 +8,7 @@ import io.reactivex.schedulers.Schedulers
 
 class CategoriesRoomRepository : CategoriesRepository {
 
-    private val categoriesDao: CategoriesDao = App.dataBase.categoryDao()
+    private val categoriesDao: CategoriesDao = App.dataBase.categoriesDao()
 
     override fun getCategories(): Observable<List<CategoryEntity>> = categoriesDao.getAll()
         .subscribeOn(Schedulers.io())

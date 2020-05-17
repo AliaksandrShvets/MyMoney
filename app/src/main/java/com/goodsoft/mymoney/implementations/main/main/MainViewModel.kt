@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.goodsoft.mymoney.App
 import com.goodsoft.mymoney.core.Constants
 import com.goodsoft.mymoney.core.toCategoryItem
-import com.goodsoft.mymoney.database.categories.CategoriesRoomRepository
+import com.goodsoft.mymoney.database.tables.categories.CategoriesRoomRepository
 import com.goodsoft.mymoney.implementations.main.categories.CategoryItem
 
 

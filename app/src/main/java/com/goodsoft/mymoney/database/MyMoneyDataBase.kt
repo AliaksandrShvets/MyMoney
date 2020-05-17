@@ -4,13 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.goodsoft.mymoney.database.accounts.AccountsDao
-import com.goodsoft.mymoney.database.accounts.AccountEntity
-import com.goodsoft.mymoney.database.categories.CategoriesDao
-import com.goodsoft.mymoney.database.categories.CategoryEntity
-import com.goodsoft.mymoney.database.parsers.SmsParsersDao
-import com.goodsoft.mymoney.database.parsers.SmsParserEntity
+import com.goodsoft.mymoney.database.converter.RoomConverters
+import com.goodsoft.mymoney.database.tables.accounts.AccountsDao
+import com.goodsoft.mymoney.database.tables.accounts.AccountEntity
+import com.goodsoft.mymoney.database.tables.categories.CategoriesDao
+import com.goodsoft.mymoney.database.tables.categories.CategoryEntity
+import com.goodsoft.mymoney.database.tables.parsers.SmsParsersDao
+import com.goodsoft.mymoney.database.tables.parsers.SmsParserEntity
+import com.goodsoft.mymoney.database.tables.transaction.TransactionEntity
+import com.goodsoft.mymoney.database.tables.transaction.TransactionsDao
 import com.goodsoft.mymoney.enums.AccountIcon
 import com.goodsoft.mymoney.enums.CategoryIcon
 import java.util.*
@@ -20,10 +24,12 @@ import java.util.*
         entities = [
             CategoryEntity::class,
             AccountEntity::class,
-            SmsParserEntity::class
+            SmsParserEntity::class,
+            TransactionEntity::class
         ],
         version = 1
 )
+@TypeConverters(RoomConverters::class)
 abstract class MyMoneyDataBase : RoomDatabase() {
 
     companion object {
@@ -55,10 +61,12 @@ abstract class MyMoneyDataBase : RoomDatabase() {
         }
     }
 
-    abstract fun categoryDao(): CategoriesDao
+    abstract fun categoriesDao(): CategoriesDao
 
-    abstract fun accountDao(): AccountsDao
+    abstract fun accountsDao(): AccountsDao
 
-    abstract fun smsParsers(): SmsParsersDao
+    abstract fun smsParsersDao(): SmsParsersDao
+
+    abstract fun transactionsDao(): TransactionsDao
 
 }

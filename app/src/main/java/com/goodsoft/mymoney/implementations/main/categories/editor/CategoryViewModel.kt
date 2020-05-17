@@ -6,8 +6,8 @@ import androidx.databinding.ObservableField
 import androidx.recyclerview.widget.DiffUtil
 import com.goodsoft.mymoney.App
 import com.goodsoft.mymoney.R
-import com.goodsoft.mymoney.database.categories.CategoryEntity
-import com.goodsoft.mymoney.database.categories.CategoriesRoomRepository
+import com.goodsoft.mymoney.database.tables.categories.CategoryEntity
+import com.goodsoft.mymoney.database.tables.categories.CategoriesRoomRepository
 import com.goodsoft.mymoney.enums.CategoryIcon
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
 import java.util.*

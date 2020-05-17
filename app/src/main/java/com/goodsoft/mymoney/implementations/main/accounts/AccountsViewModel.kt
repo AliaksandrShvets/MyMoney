@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.DiffUtil
 import com.goodsoft.mymoney.core.toAccountItem
-import com.goodsoft.mymoney.database.accounts.AccountsRoomRepository
+import com.goodsoft.mymoney.database.tables.accounts.AccountsRoomRepository
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
 
 

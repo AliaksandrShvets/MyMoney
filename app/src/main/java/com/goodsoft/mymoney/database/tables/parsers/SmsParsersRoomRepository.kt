@@ -1,4 +1,4 @@
-package com.goodsoft.mymoney.database.parsers
+package com.goodsoft.mymoney.database.tables.parsers
 
 import com.goodsoft.mymoney.App
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 class SmsParsersRoomRepository : SmsParsersRepository {
 
-    private val smsParsersDao: SmsParsersDao = App.dataBase.smsParsers()
+    private val smsParsersDao: SmsParsersDao = App.dataBase.smsParsersDao()
 
     override suspend fun getAll(): Flow<List<SmsParserEntity>> = smsParsersDao.getAll()
 
