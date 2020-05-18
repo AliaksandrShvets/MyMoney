@@ -27,7 +27,7 @@ class MainFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
         binding.viewModel = viewModel
-        binding.itemBinding = createItemBinding(BR.categoryItem, R.layout.item_favorite_category)
+        binding.itemBinding = createItemBinding(BR.item, R.layout.item_transaction)
         binding.addIncome.setOnClickListener { startTransactionActivity(TransactionType.INCOME) }
         binding.addOutcome.setOnClickListener { startTransactionActivity(TransactionType.OUTCOME) }
         return binding.root

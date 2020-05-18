@@ -35,4 +35,7 @@
     <color name="sms_parser_element_4_span">#33fe982a</color>
     <color name="sms_parser_element_5_span">#33bc4f07</color>
 
+    <!-- Other's colors -->
+    <color name="red">#b00020</color>
+    <color name="green">#8fb347</color>
 </resources>

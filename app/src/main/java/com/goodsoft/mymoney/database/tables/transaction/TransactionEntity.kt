@@ -1,9 +1,11 @@
 package com.goodsoft.mymoney.database.tables.transaction
 
+import androidx.annotation.DrawableRes
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.goodsoft.mymoney.database.tables.categories.CategoryEntity
+import com.goodsoft.mymoney.enums.CategoryIcon
 import com.goodsoft.mymoney.enums.TransactionType
 import java.util.*
 
@@ -19,4 +21,9 @@ data class TransactionEntity(
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
+
+    @DrawableRes
+    fun getIcon():  Int {
+        return CategoryIcon.valueOf(category.icon).iconRes
+    }
 }

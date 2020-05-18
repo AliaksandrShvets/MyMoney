@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <import type="com.goodsoft.mymoney.util.DateUtilsKt"/>
+
+        <import type="com.goodsoft.mymoney.enums.TransactionType"/>
+
+        <import type="com.goodsoft.mymoney.database.tables.transaction.TransactionEntity"/>
+
+        <variable
+            name="item"
+            type="TransactionEntity" />
+    </data>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/vTransactionType"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="center"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorPrimary"
+            android:src="@{context.getDrawable(item.getIcon)}"
+            tools:srcCompat="@drawable/ic_category_bar" />
+
+        <TextView
+            android:id="@+id/vAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_toStartOf="@+id/vTime"
+            android:layout_toEndOf="@+id/vTransactionType"
+            android:fontFamily="@font/roboto_slab"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@{item.type == TransactionType.INCOME ? @color/red : @color/green}"
+            android:text="@{String.valueOf(item.amount)}"
+            tools:text="€ 108.25" />
+
+        <TextView
+            android:id="@+id/vDescription"
+            style="@style/OmniText.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vAmount"
+            android:layout_alignStart="@id/vAmount"
+            android:layout_alignEnd="@+id/vTime"
+            android:text="@{item.category.name}"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="#99000000"
+            tools:text="Transfer to Visa Gold *1234 asdf asd" />
+
+        <TextView
+            android:id="@+id/vTime"
+            style="@style/OmniText.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/vAmount"
+            android:layout_alignParentEnd="true"
+            android:text="@{DateUtilsKt.asDateWithTime(item.date)}"
+            android:textColor="#99000000"
+            tools:text="11:10" />
+    </RelativeLayout>
+</layout>
