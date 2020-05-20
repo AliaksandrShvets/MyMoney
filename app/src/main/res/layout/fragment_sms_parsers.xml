@@ -13,7 +13,7 @@
 
         <variable
             name="viewModel"
-            type="com.goodsoft.mymoney.implementations.main.sms.SmsParsersViewModel" />
+            type="com.goodsoft.mymoney.implementations.backdrop.sms.SmsParsersViewModel" />
     </data>
 
     <FrameLayout

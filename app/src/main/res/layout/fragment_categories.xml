@@ -5,7 +5,7 @@
 
     <data class=".CategoriesFragmentBinding">
 
-        <import type="com.goodsoft.mymoney.implementations.main.categories.CategoryItem"/>
+        <import type="com.goodsoft.mymoney.implementations.backdrop.categories.CategoryItem"/>
 
         <variable
             name="itemBinding"
@@ -13,7 +13,7 @@
 
         <variable
             name="viewModel"
-            type="com.goodsoft.mymoney.implementations.main.categories.CategoriesViewModel" />
+            type="com.goodsoft.mymoney.implementations.backdrop.categories.CategoriesViewModel" />
     </data>
 
     <FrameLayout

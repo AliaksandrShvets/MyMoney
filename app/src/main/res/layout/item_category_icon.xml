@@ -7,7 +7,7 @@
 
         <variable
             name="categoryIcon"
-            type="com.goodsoft.mymoney.implementations.main.categories.editor.CategoryIconItem" />
+            type="com.goodsoft.mymoney.implementations.backdrop.categories.editor.CategoryIconItem" />
 
         <variable
             name="listener"

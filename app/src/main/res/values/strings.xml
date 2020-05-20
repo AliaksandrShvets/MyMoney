@@ -3,8 +3,9 @@
 
     <!-- Tools -->
     <string name="tools_date" translatable="false">29.01.1994</string>
+    <string name="tools_time" translatable="false">23:43</string>
     <string name="tools_number" translatable="false">29</string>
-    <string name="tools_amount" translatable="false">1994$</string>
+    <string name="tools_amount" translatable="false">1994.29</string>
     <string name="tools_category" translatable="false">Категория</string>
 
     <!-- Actions -->
@@ -27,11 +28,12 @@
     <string name="menu_main_settings">Настройки</string>
 
     <!-- Activity Transaction  -->
-    <string name="transition_title">Создание транзакции</string>
-    <string name="transition_income_title">Добавление дохода</string>
-    <string name="transition_outcome_title">Добавление расхода</string>
-    <string name="date_create_transaction">Дата проведения транзакции</string>
-    <string name="sum_transaction">Сумма</string>
+    <string name="activity_transaction_income">Добавление дохода</string>
+    <string name="activity_transaction_outcome">Добавление расхода</string>
+    <string name="activity_transaction_date_hint">Дата проведения транзакции</string>
+    <string name="activity_transaction_amount_hint">Сумма</string>
+    <string name="activity_transaction_amount_error">Введите сумму</string>
+    <string name="activity_transaction_category_error">Выберите категорию</string>
 
     <!-- Activity SmsParserCreator -->
     <string name="activity_sms_parser_creator_title">Создание обработчика СМС</string>

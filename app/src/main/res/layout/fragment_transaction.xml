@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class=".TransactionFragmentBinding">
+
+        <import type="com.goodsoft.mymoney.util.DateUtilsKt" />
+
+        <import type="com.goodsoft.mymoney.enums.TransactionType" />
+
+        <import type="com.goodsoft.mymoney.implementations.transaction.CheckableCategoryItem" />
+
+        <variable
+            name="itemBinding"
+            type="me.tatarka.bindingcollectionadapter2.ItemBinding&lt;CheckableCategoryItem&gt;" />
+
+        <variable
+            name="viewModel"
+            type="com.goodsoft.mymoney.implementations.transaction.TransactionViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables, ContentDescription">
+
+            <ImageView
+                android:layout_width="?android:attr/actionBarSize"
+                android:layout_height="?android:attr/actionBarSize"
+                android:layout_gravity="center_vertical"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="@dimen/normal_gap"
+                android:src="@drawable/ic_close"
+                android:onClick="@{(view) -> viewModel.finish()}"
+                android:tint="@color/black_translucent_38" />
+
+            <TextView
+                style="@style/MaterialAlertDialog.MaterialComponents.Title.Text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@{viewModel.transactionType == TransactionType.INCOME ? @string/activity_transaction_income : @string/activity_transaction_outcome}"
+                tools:text="@string/activity_transaction_income" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_gap"
+            android:layout_marginTop="@dimen/normal_gap"
+            android:layout_marginEnd="@dimen/normal_gap"
+            android:hint="@string/activity_transaction_date_hint"
+            app:startIconDrawable="@drawable/ic_date_range"
+            app:startIconTint="@android:color/darker_gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/transactionDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="textNoSuggestions"
+                android:text="@{DateUtilsKt.asFullDate(viewModel.date)}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_gap"
+            android:layout_marginStart="@dimen/normal_gap"
+            android:layout_marginTop="@dimen/small_gap"
+            android:layout_marginEnd="@dimen/normal_gap"
+            android:hint="@string/activity_transaction_amount_hint"
+            app:errorEnabled="true"
+            app:errorText="@{viewModel.amountError}"
+            app:startIconDrawable="@drawable/ic_attach_money"
+            app:startIconTint="@android:color/darker_gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="@={viewModel.amount}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:itemBinding="@{itemBinding}"
+            app:items="@{viewModel.categories}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_category_checkable" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_gap"
+            android:onClick="@{(view) -> viewModel.createTransaction()}"
+            android:text="@string/action_apply" />
+    </LinearLayout>
+</layout>

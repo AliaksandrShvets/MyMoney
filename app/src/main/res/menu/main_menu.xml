@@ -5,6 +5,7 @@
 
         <item
             android:id="@+id/menuMain"
+            android:checked="true"
             android:title="@string/menu_main_home"/>
 
         <item

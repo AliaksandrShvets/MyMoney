@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".implementations.main.MainActivity">
+        <activity android:name=".implementations.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
@@ -22,9 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".implementations.transaction.TransactionActivity" />
-        <activity android:name=".implementations.sms.SmsParserCreationActivity" />
-        <receiver android:name=".implementations.main.sms.SmsReceiver"
+        <receiver android:name="com.goodsoft.mymoney.implementations.sms.SmsReceiver"
             android:permission="android.permission.BROADCAST_SMS">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />

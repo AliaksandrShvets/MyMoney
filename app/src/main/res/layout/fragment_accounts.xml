@@ -5,7 +5,7 @@
 
     <data class=".AccountsFragmentBinding">
 
-        <import type="com.goodsoft.mymoney.implementations.main.accounts.AccountItem"/>
+        <import type="com.goodsoft.mymoney.implementations.backdrop.accounts.AccountItem"/>
 
         <variable
             name="itemBinding"
@@ -13,7 +13,7 @@
 
         <variable
             name="viewModel"
-            type="com.goodsoft.mymoney.implementations.main.accounts.AccountsViewModel" />
+            type="com.goodsoft.mymoney.implementations.backdrop.accounts.AccountsViewModel" />
     </data>
 
     <FrameLayout
@@ -26,7 +26,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:paddingBottom="@dimen/recycler_padding_bottom_for_fab"
-            tools:listitem="@layout/item_category"
+            tools:listitem="@layout/item_account"
             app:itemBinding="@{itemBinding}"
             app:items="@{viewModel.items}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

@@ -10,6 +10,7 @@ import androidx.databinding.BindingAdapter
 import com.goodsoft.mymoney.database.tables.parsers.SmsParserEntity
 import com.goodsoft.mymoney.enums.SmsParameterEnum
 import com.goodsoft.mymoney.implementations.sms.parser.ExpressionEntity
+import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
@@ -40,11 +41,11 @@ fun setSmsParser(textView: TextView, smsParser: SmsParserEntity) {
     }
 }
 
-/*@BindingAdapter("errorText")
-fun setErrorText(textInputLayout: TextInputLayout, errorText: String) {
-    if (errorText.isNotEmpty()) {
+@BindingAdapter("errorText")
+fun setErrorText(textInputLayout: TextInputLayout, errorText: String?) {
+    if (errorText?.isNotEmpty()==true) {
         textInputLayout.error = errorText
     } else {
         textInputLayout.isErrorEnabled = false
     }
-}*/
+}

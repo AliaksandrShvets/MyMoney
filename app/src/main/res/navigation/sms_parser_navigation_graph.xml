@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sms_parser_navigation_graph"
-    app:startDestination="@id/smsListFragment">
+    app:startDestination="@id/smsListFragment"
+    tools:ignore="UnusedNavigation">
 
     <fragment
         android:id="@+id/smsListFragment"
@@ -23,7 +24,7 @@
 
     <fragment
         android:id="@+id/smsParserCreationFragment"
-        android:name="com.goodsoft.mymoney.implementations.sms.parser.SmsParserCreationFragment"
+        android:name="com.goodsoft.mymoney.implementations.sms.parser.SmsParserFragment"
         android:label="SmsParserCreationFragment"
-        tools:layout="@layout/fragment_sms_parser_creation" />
+        tools:layout="@layout/fragment_sms_parser" />
 </navigation>

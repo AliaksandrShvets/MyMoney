@@ -2,30 +2,29 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_navigation_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/backdropFragment"
+    tools:ignore="UnusedNavigation">
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.goodsoft.mymoney.implementations.main.main.MainFragment"
-        android:label="Main"
-        tools:layout="@layout/fragment_main"/>
+        android:id="@+id/backdropFragment"
+        android:name="com.goodsoft.mymoney.implementations.backdrop.BackdropFragment"
+        android:label="BackdropFragment"
+        tools:layout="@layout/fragment_backdrop"/>
 
     <fragment
-        android:id="@+id/categoriesFragment"
-        android:name="com.goodsoft.mymoney.implementations.main.categories.CategoriesFragment"
-        android:label="Categories"
-        tools:layout="@layout/fragment_categories" />
+        android:id="@+id/transactionFragment"
+        android:name="com.goodsoft.mymoney.implementations.transaction.TransactionFragment"
+        android:label="TransactionFragment"
+        tools:layout="@layout/fragment_transaction">
+
+        <argument
+            android:name="transactionType"
+            app:argType="com.goodsoft.mymoney.enums.TransactionType" />
+    </fragment>
 
     <fragment
-        android:id="@+id/accountsFragment"
-        android:name="com.goodsoft.mymoney.implementations.main.accounts.AccountsFragment"
-        android:label="Accounts"
-        tools:layout="@layout/fragment_accounts" />
-
-    <fragment
-        android:id="@+id/smsParsersFragment"
-        android:name="com.goodsoft.mymoney.implementations.main.sms.SmsParsersFragment"
-        android:label="SmsParsers"
-        tools:layout="@layout/fragment_sms_parsers" />
+        android:id="@+id/smsParserCreationFragment"
+        android:name="com.goodsoft.mymoney.implementations.sms.SmsParserCreationFragment"
+        android:label="SmsParserCreationFragment"
+        tools:layout="@layout/fragment_sms_parser_creation"/>
 </navigation>

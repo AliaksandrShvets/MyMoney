@@ -3,135 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data class=".SmsParserCreationFragmentBinding">
-
-        <import type="android.text.TextUtils" />
-
-        <import type="androidx.core.content.ContextCompat" />
-
-        <variable
-            name="viewModel"
-            type="com.goodsoft.mymoney.implementations.sms.parser.SmsParserCreationViewModel" />
-    </data>
+    <data class=".SmsParserCreationActivityBinding" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables, ContentDescription">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical"
+                android:padding="12dp"
+                android:src="@drawable/ic_close"
+                android:tint="@color/black_translucent_38" />
+
+            <TextView
+                style="@style/MaterialAlertDialog.MaterialComponents.Title.Text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/normal_gap"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/activity_sms_parser_creator_title" />
+        </LinearLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/sms_layout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/fragment_sms_parser_creation_sms_template">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:inputType="textFilter|textMultiLine"
-                        android:text="@{viewModel.spannableSms}"
-                        android:textColor="@color/colorPrimary"
-                        tools:text="Some Bank\nCard9977; Oplata: 22,00 BYN; 17.10.19 21:04:21; HERO PARK,MINSK,BLR; Dostupno: 9 828,49 BYN" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/part_amount_layout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/fragment_sms_parser_creation_amount_hint"
-                    app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/ic_rounded_rectangle"
-                    app:startIconTint="@color/sms_parser_element_5">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/part_amount"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:cursorVisible="false"
-                        android:focusable="true"
-                        android:focusableInTouchMode="false"
-                        android:text="@{viewModel.amount}"
-                        android:textColor="@color/colorPrimary" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/part_date_layout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/fragment_sms_parser_creation_date_hint"
-                    app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/ic_rounded_rectangle"
-                    app:startIconTint="@color/sms_parser_element_1">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/part_date"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:cursorVisible="false"
-                        android:focusable="true"
-                        android:focusableInTouchMode="false"
-                        android:text="@{viewModel.date}"
-                        android:textColor="@color/colorPrimary" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/part_group_layout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/fragment_sms_parser_creation_group_hint"
-                    app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/ic_rounded_rectangle"
-                    app:startIconTint="@color/sms_parser_element_4">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/part_group"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:cursorVisible="false"
-                        android:focusable="true"
-                        android:focusableInTouchMode="false"
-                        android:text="@{viewModel.group}"
-                        android:textColor="@color/colorPrimary" />
-                    <!--android:foreground="?android:attr/selectableItemBackgroundBorderless"-->
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-        </ScrollView>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/apply"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="@string/action_save"
-            android:textColor="@color/white"/>
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/sms_parser_nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/sms_parser_navigation_graph" />
     </LinearLayout>
 </layout>

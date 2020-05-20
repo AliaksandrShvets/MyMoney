@@ -7,7 +7,7 @@
 
         <import type="android.text.TextUtils" />
 
-        <import type="com.goodsoft.mymoney.implementations.main.categories.editor.CategoryIconItem"/>
+        <import type="com.goodsoft.mymoney.implementations.backdrop.categories.editor.CategoryIconItem"/>
 
         <variable
             name="itemBinding"
@@ -15,7 +15,7 @@
 
         <variable
             name="viewModel"
-            type="com.goodsoft.mymoney.implementations.main.categories.editor.CategoryViewModel" />
+            type="com.goodsoft.mymoney.implementations.backdrop.categories.editor.CategoryViewModel" />
     </data>
 
     <LinearLayout

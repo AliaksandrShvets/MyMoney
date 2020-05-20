@@ -4,8 +4,8 @@ import com.goodsoft.mymoney.database.tables.accounts.AccountEntity
 import com.goodsoft.mymoney.database.tables.categories.CategoryEntity
 import com.goodsoft.mymoney.enums.AccountIcon
 import com.goodsoft.mymoney.enums.CategoryIcon
-import com.goodsoft.mymoney.implementations.main.accounts.AccountItem
-import com.goodsoft.mymoney.implementations.main.categories.CategoryItem
+import com.goodsoft.mymoney.implementations.backdrop.accounts.AccountItem
+import com.goodsoft.mymoney.implementations.backdrop.categories.CategoryItem
 
 
 fun CategoryEntity.toCategoryItem() = CategoryItem(
