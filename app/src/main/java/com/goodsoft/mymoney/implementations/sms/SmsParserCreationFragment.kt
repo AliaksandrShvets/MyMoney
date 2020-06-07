@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.goodsoft.mymoney.R
 import com.goodsoft.mymoney.SmsParserCreationActivityBinding
 
@@ -16,7 +18,11 @@ class SmsParserCreationFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sms_parser_creation, container, false)
-        binding.close.setOnClickListener { activity?.finish() }
+        binding.close.setOnClickListener {
+            if (!binding.smsParserNavHostFragment.findNavController().popBackStack()) {
+                findNavController().popBackStack()
+            }
+        }
         return binding.root
     }
 }

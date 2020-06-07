@@ -1,7 +1,6 @@
 package com.goodsoft.mymoney.implementations.backdrop.main
 
 import android.annotation.SuppressLint
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.DiffUtil
@@ -17,9 +16,11 @@ import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
 class MainViewModel : ViewModel() {
 
     val transactionsItems = DiffObservableList(object : DiffUtil.ItemCallback<TransactionEntity>() {
+
         override fun areItemsTheSame(oldItem: TransactionEntity, newItem: TransactionEntity): Boolean {
             return oldItem == newItem
         }
+
         override fun areContentsTheSame(oldItem: TransactionEntity, newItem: TransactionEntity): Boolean {
             return oldItem.date == newItem.date &&
                     oldItem.type == newItem.type &&
@@ -28,7 +29,6 @@ class MainViewModel : ViewModel() {
                     oldItem.info == newItem.info
         }
     })
-    val transactionItemsEmpty = MutableLiveData<Boolean>()
 
     init {
         initTransactions()
@@ -40,7 +40,6 @@ class MainViewModel : ViewModel() {
             TransactionsRoomRepository().getAll().collect {
                 withContext(Dispatchers.Main){
                     transactionsItems.update(it)
-                    transactionItemsEmpty.value = it.isEmpty()
                 }
             }
         }

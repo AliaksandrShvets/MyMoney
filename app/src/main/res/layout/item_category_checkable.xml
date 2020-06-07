@@ -50,6 +50,6 @@
             android:contentDescription="@string/tools_category"
             android:src="@drawable/ic_radio_button_checked"
             app:isVisible="@{item.selected}"
-            app:tint="@color/colorAccent" />
+            android:tint="@color/colorAccent" />
     </LinearLayout>
 </layout>

@@ -14,7 +14,6 @@ import java.util.*
 data class TransactionEntity(
         val date: Date,
         val type: TransactionType,
-        @Embedded(prefix = "category_")
         val category: CategoryEntity,
         val amount: Double,
         val info: String

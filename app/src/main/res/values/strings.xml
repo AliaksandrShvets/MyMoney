@@ -16,9 +16,6 @@
     <string name="action_delete">Удалить</string>
     <string name="action_close">Закрыть</string>
 
-    <!-- Date formats -->
-    <string name="simple_date_format">%s %s %s</string>
-
     <!-- Menu Main -->
     <string name="menu_main_home">Главная</string>
     <string name="menu_main_categories">Категории</string>

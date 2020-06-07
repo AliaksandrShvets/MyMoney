@@ -1,10 +1,12 @@
 package com.goodsoft.mymoney.implementations.transaction
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -16,6 +18,7 @@ import com.goodsoft.mymoney.R
 import com.goodsoft.mymoney.TransactionFragmentBinding
 import com.goodsoft.mymoney.core.createItemBinding
 import com.goodsoft.mymoney.core.generateDatePickerDialog
+import kotlinx.coroutines.GlobalScope
 import me.tatarka.bindingcollectionadapter2.BR
 
 
@@ -31,6 +34,10 @@ class TransactionFragment : Fragment() {
         binding.viewModel = viewModel
         binding.itemBinding = createItemBinding(BR.item, R.layout.item_category_checkable, {
             viewModel.checkItem(it)
+
+            val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
+            findNavController().popBackStack()
         })
         binding.transactionDate.setOnClickListener { showDatePickerDialog() }
         initViewModel()

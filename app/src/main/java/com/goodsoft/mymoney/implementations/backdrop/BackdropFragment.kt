@@ -1,9 +1,11 @@
 package com.goodsoft.mymoney.implementations.backdrop
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -47,6 +49,10 @@ class BackdropFragment : Fragment() {
     }
 
     private fun initNavigation() {
+        /*binding.navigationView.findNavController().addOnDestinationChangedListener { _, _, _ ->
+            val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
+        }*/
         binding.navigationView.setNavigationItemSelectedListener { item ->
             backdropBehavior.close()
             viewModel.backdropTitle.set(item.title?.toString())
