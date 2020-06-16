@@ -19,9 +19,10 @@ class SmsParserCreationFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sms_parser_creation, container, false)
         binding.close.setOnClickListener {
-            if (!binding.smsParserNavHostFragment.findNavController().popBackStack()) {
+            findNavController().popBackStack()
+            /*if (!binding.smsParserNavHostFragment.findNavController().popBackStack()) {
                 findNavController().popBackStack()
-            }
+            }*/
         }
         return binding.root
     }

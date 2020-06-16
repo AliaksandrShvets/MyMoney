@@ -14,8 +14,8 @@ android {
         applicationId "com.goodsoft.mymoney"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "0.01-beta"
+        versionCode 3
+        versionName "0.03-beta"
         kapt {
             arguments {
                 arg("room.schemaLocation", "$projectDir/schemas".toString())

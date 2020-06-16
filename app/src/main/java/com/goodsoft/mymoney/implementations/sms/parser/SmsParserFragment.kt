@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.goodsoft.mymoney.R
 import com.goodsoft.mymoney.SmsParserCreationFragmentBinding
@@ -56,12 +57,12 @@ class SmsParserFragment : Fragment() {
                     parts = Gson().toJson(parts)
             )
             SmsParsersRoomRepository().insert(smsParserEntity).subscribe({
-                requireActivity().finish()
+                parentFragment?.parentFragment?.findNavController()?.popBackStack()
             }, {})
             if (checkPermissions(Manifest.permission.RECEIVE_SMS)) {
                 requestPermissions(arrayOf(Manifest.permission.RECEIVE_SMS), SmsListFragment.PERMISSIONS_REQUEST_READ_SMS)
             } else {
-                requireActivity().finish()
+                //requireActivity().finish()
             }
         }
         return binding.root
