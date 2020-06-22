@@ -49,20 +49,14 @@ class BackdropFragment : Fragment() {
     }
 
     private fun initNavigation() {
-        /*binding.navigationView.findNavController().addOnDestinationChangedListener { _, _, _ ->
-            val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
-        }*/
         binding.navigationView.setNavigationItemSelectedListener { item ->
             backdropBehavior.close()
             viewModel.backdropTitle.set(item.title?.toString())
             when (item.itemId) {
                 R.id.menuMain -> binding.backdropNavHostFragment.findNavController().navigate(R.id.mainFragment)
-                R.id.menuCategories -> binding.backdropNavHostFragment.findNavController().navigate(R.id.categoriesFragment)
-                R.id.menuAccounts -> binding.backdropNavHostFragment.findNavController().navigate(R.id.accountsFragment)
+                R.id.menuCategories -> binding.backdropNavHostFragment.findNavController().navigate(R.id.categoriesFragment)/*
+                R.id.menuAccounts -> binding.backdropNavHostFragment.findNavController().navigate(R.id.accountsFragment)*/
                 R.id.menuSmsParser -> binding.backdropNavHostFragment.findNavController().navigate(R.id.smsParsersFragment)
-                R.id.menuHistory -> binding.backdropNavHostFragment.findNavController().navigate(R.id.categoriesFragment)
-                R.id.menuSettings -> binding.backdropNavHostFragment.findNavController().navigate(R.id.categoriesFragment)
             }
             true
         }

@@ -19,6 +19,9 @@ val fullDateFormat: SimpleDateFormat
 val dateWithTimeFormat: SimpleDateFormat
     get() = SimpleDateFormat("dd.MM.yy HH:mm", Locale.getDefault())
 
+val weekFormat
+    get() = SimpleDateFormat("EEE", Locale.getDefault())
+
 private fun Date?.asFormat(dateFormat : SimpleDateFormat) : String {
     return this?.let { dateFormat.format(this) } ?: ""
 }

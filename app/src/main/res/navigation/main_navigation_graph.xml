@@ -20,6 +20,11 @@
         <argument
             android:name="transactionType"
             app:argType="com.goodsoft.mymoney.enums.TransactionType" />
+
+        <argument
+            android:name="transactionEntity"
+            app:nullable="true"
+            app:argType="com.goodsoft.mymoney.database.tables.transaction.TransactionEntity" />
     </fragment>
 
     <fragment

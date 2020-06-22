@@ -63,11 +63,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif"
                     android:text="@{viewModel.backdropTitle}"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
-                    android:textStyle="normal"
+                    android:textSize="16sp"
                     tools:text="История операций" />
 
                 <ImageView
@@ -88,7 +86,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#0f062953" />
+                android:background="@color/black_translucent_12" />
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/backdrop_nav_host_fragment"

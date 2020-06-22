@@ -10,6 +10,8 @@ import androidx.databinding.BindingAdapter
 import com.goodsoft.mymoney.database.tables.parsers.SmsParserEntity
 import com.goodsoft.mymoney.enums.SmsParameterEnum
 import com.goodsoft.mymoney.implementations.sms.parser.ExpressionEntity
+import com.goodsoft.mymoney.widgets.funds.FoundsData
+import com.goodsoft.mymoney.widgets.funds.FoundsView
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -48,4 +50,9 @@ fun setErrorText(textInputLayout: TextInputLayout, errorText: String?) {
     } else {
         textInputLayout.isErrorEnabled = false
     }
+}
+
+@BindingAdapter("foundsData")
+fun foundsData(view: FoundsView, data: FoundsData?) {
+    view.setData(data)
 }

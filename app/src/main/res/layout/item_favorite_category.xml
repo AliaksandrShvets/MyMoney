@@ -24,7 +24,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/bg_stroke"
+            android:background="@drawable/bg_category_selector"
             android:contentDescription="@string/menu_main_categories"
             android:padding="12dp"
             android:src="@{context.getDrawable(categoryItem.icon)}"

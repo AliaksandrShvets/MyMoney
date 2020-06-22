@@ -2,5 +2,5 @@
 <View xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="1dp"
-    android:background="@color/black_translucent_12"
+    android:background="@color/black_translucent_38"
     android:orientation="vertical" />

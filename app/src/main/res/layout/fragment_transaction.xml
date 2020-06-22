@@ -56,7 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:text="@{viewModel.transactionType == TransactionType.INCOME ? @string/activity_transaction_income : @string/activity_transaction_outcome}"
+                        android:text="@{viewModel.transaction != null ? @string/activity_transaction_edit : viewModel.transactionType == TransactionType.INCOME ? @string/activity_transaction_income : @string/activity_transaction_outcome}"
                         tools:text="@string/activity_transaction_income" />
                 </LinearLayout>
 

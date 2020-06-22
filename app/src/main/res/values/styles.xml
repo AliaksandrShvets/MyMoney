@@ -41,4 +41,47 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
+
+    <!-- FoundsView style -->
+    <declare-styleable name="FoundsView">
+        <attr name="fv_textTitleAppearance" format="reference"/>
+        <attr name="fv_textTotalAmountAppearance" format="reference"/>
+        <attr name="fv_textAmountAppearance" format="reference"/>
+        <attr name="fv_chipAppearance" format="reference"/>
+        <attr name="fv_textTitleColor" format="color"/>
+        <attr name="fv_textColor" format="color"/>
+        <attr name="fv_analyticsRowSelectedColor" format="color"/>
+        <attr name="fv_analyticsRowUnselectedColor" format="color"/>
+        <attr name="fv_dividerColor" format="color"/>
+        <attr name="fv_totalAmountTitle" format="string"/>
+        <attr name="fv_amountTitle" format="string"/>
+    </declare-styleable>
+    <style name="MyMoneyText">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <!-- Caption -->
+    <style name="MyMoneyText.Caption">
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <!-- Overline -->
+    <style name="MyMoneyText.Overline">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="MyMoneyText.Subtitle1">
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="MyMoneyText.H5">
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
+    <item name="chipBackgroundColor">@color/background_color_chip_state_list</item>
+    <item name="chipStrokeColor">@color/background_color_chip_state_list</item>
+    <item name="android:textColor">@color/text_color_chip_state_list</item>
+    <item name="chipSurfaceColor">@android:color/transparent</item>
+</style>
 </resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.goodsoft.mymoney.widgets.funds.FoundsData" />
+    </data>
+
+    <com.goodsoft.mymoney.widgets.funds.FoundsView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/analytics_view_bg"
+        app:foundsData="@{data}"
+        app:fv_amountTitle="@string/fragment_my_funds_amount_title__1"
+        app:fv_analyticsRowSelectedColor="@color/white_high_emphasis"
+        app:fv_analyticsRowUnselectedColor="@color/white_disabled"
+        app:fv_chipAppearance="@style/MyMoneyText.Subtitle1"
+        app:fv_dividerColor="@color/white_light"
+        app:fv_textAmountAppearance="@style/MyMoneyText.Subtitle1"
+        app:fv_textColor="@color/white_high_emphasis"
+        app:fv_textTitleAppearance="@style/MyMoneyText.Caption"
+        app:fv_textTitleColor="@color/white_medium_emphasis"
+        app:fv_textTotalAmountAppearance="@style/MyMoneyText.H5"
+        app:fv_totalAmountTitle="@string/fragment_my_funds_total_amount_title" />
+</layout>

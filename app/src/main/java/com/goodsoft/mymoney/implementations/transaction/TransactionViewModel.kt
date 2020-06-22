@@ -28,6 +28,7 @@ class TransactionViewModel : ViewModel() {
     val amountError = ObservableField<String>()
     val categories = DiffObservableList(CheckableCategoryItem.getDiffItemCallback())
     val categoryError = SingleLiveEvent<Unit>()
+    val transaction = ObservableField<TransactionEntity>()
 
     private var amountErrorString = ""
 
@@ -35,9 +36,18 @@ class TransactionViewModel : ViewModel() {
         initCategories()
     }
 
-    fun initStrings(transactionType: TransactionType, amountError: String) {
+    fun init(
+            transactionType: TransactionType,
+            amountError: String,
+            transactionEntity: TransactionEntity? = null
+    ) {
         this.transactionType.value = transactionType
         amountErrorString = amountError
+        transactionEntity?.let {
+            date.set(it.date)
+            amount.set(it.amount.toString())
+            transaction.set(it)
+        }
     }
 
     fun finish() {
@@ -68,8 +78,18 @@ class TransactionViewModel : ViewModel() {
                 return@launch
             }
             val info = ""
-            val transaction = TransactionEntity(date, type, category, amount, info)
-            TransactionsRoomRepository().insert(transaction).subscribe({ finish() }, {})
+            transaction.get()?.let {
+                TransactionsRoomRepository().update(it.apply {
+                    this.date = date
+                    this.type = type
+                    this.category = category
+                    this.amount = amount
+                    this.info = info
+                }).subscribe({ finish() }, {})
+            } ?: run {
+                val transaction = TransactionEntity(date, type, category, amount, info)
+                TransactionsRoomRepository().insert(transaction).subscribe({ finish() }, {})
+            }
         }
     }
 
@@ -80,6 +100,7 @@ class TransactionViewModel : ViewModel() {
                     categories.update(categoryList.map {
                         CheckableCategoryItem(it.toCategoryItem(), MutableLiveData(false))
                     })
+                    categories.find { transaction.get()?.category?.id == it.category.categoryEntity.id }?.isSelected?.value = true
                 }, {})
     }
 }

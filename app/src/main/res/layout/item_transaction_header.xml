@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.goodsoft.mymoney.util.DateUtilsKt" />
+
+        <import type="com.goodsoft.mymoney.util.AmountUtilsKt" />
+
+        <variable
+            name="item"
+            type="com.goodsoft.mymoney.implementations.backdrop.main.TransactionHeaderItem" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/normal_gap">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{item.date}"
+            tools:text="29.01.1994" />
+
+        <TextView
+            isVisible="@{item.totalIncome > 0}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_gap"
+            android:text="@{'+' + AmountUtilsKt.formatAmount(context, item.totalIncome)}"
+            android:textColor="@color/green"
+            tools:text="+7500 Br" />
+
+        <TextView
+            isVisible="@{item.totalOutcome > 0}"
+            android:layout_marginStart="@dimen/normal_gap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{'-' + AmountUtilsKt.formatAmount(context, item.totalOutcome)}"
+            android:textColor="@color/red"
+            tools:text="-34.22 Br" />
+    </LinearLayout>
+</layout>
