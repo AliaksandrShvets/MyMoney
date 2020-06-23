@@ -29,8 +29,8 @@ class FoundsDiagram(context: Context, attrs: AttributeSet? = null) : AppCompatIm
     private val paintWithStroke by lazy {
         Paint().apply {
             val radius = (width / 26f - 1.px.toFloat()) * Math.PI.toFloat()
-            pathEffect = DashPathEffect(floatArrayOf(radius * 1f / 6, radius * 1f / 6), 0f)
-            style = Paint.Style.STROKE
+            //pathEffect = DashPathEffect(floatArrayOf(radius * 1f / 6, radius * 1f / 6), 0f)
+            style = Paint.Style.STROKE//Paint.Style.STROKE
             strokeWidth = 1.px.toFloat()
         }
     }

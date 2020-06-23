@@ -12,9 +12,10 @@
     <com.goodsoft.mymoney.widgets.funds.FoundsView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="@dimen/normal_gap"
+        android:layout_marginRight="@dimen/normal_gap"
+        android:layout_marginBottom="@dimen/small_gap"
+        android:layout_marginTop="@dimen/normal_gap"
         android:background="@drawable/analytics_view_bg"
         app:foundsData="@{data}"
         app:fv_amountTitle="@string/fragment_my_funds_amount_title__1"

@@ -29,6 +29,7 @@ import com.goodsoft.mymoney.implementations.sms.selector.SmsPartSelectorBottomSh
 import com.goodsoft.mymoney.implementations.sms.selector.SmsPartSelectorBottomSheet.Companion.SELECTION_END
 import com.goodsoft.mymoney.implementations.sms.selector.SmsPartSelectorBottomSheet.Companion.SELECTION_START
 import com.google.gson.Gson
+import java.util.regex.Pattern
 
 
 class SmsParserFragment : Fragment() {
@@ -75,12 +76,16 @@ class SmsParserFragment : Fragment() {
                 val selectionStart = data?.getIntExtra(SELECTION_START, 0) ?: 0
                 val selectionEnd = data?.getIntExtra(SELECTION_END, 0) ?: 0
                 val messageRegex = args.sms.body.replaceRange(selectionStart, selectionEnd, REGEXP_REPLACEMENT)
-                messageRegex.split("; ").forEachIndexed { index, expression ->
+                messageRegex.split(Pattern.compile("; |\\. |\\n")).forEachIndexed { index, expression ->
                     if (expression.contains(REGEXP_REPLACEMENT)) {
                         val parameter = parts.toList().firstOrNull {it.second.delimiterIndex == index }?.first ?: smsParameter
                         if (parameter == smsParameter) {
-                            parts[smsParameter] = ExpressionEntity(selectionStart, selectionEnd, expression, index)
-                            setSpannable(smsParameter, selectionStart, selectionEnd)
+                            if (smsParameter == SmsParameterEnum.AMOUNT && args.sms.body.substring(selectionStart, selectionEnd).replace(",",".").toDoubleOrNull() == null) {
+                                Toast.makeText(requireContext(), "Выделите только сумму", Toast.LENGTH_SHORT).show()
+                            } else {
+                                parts[smsParameter] = ExpressionEntity(selectionStart, selectionEnd, expression, index)
+                                setSpannable(smsParameter, selectionStart, selectionEnd)
+                            }
                         } else {
                             Toast.makeText(requireContext(), "Выражение уже используется для \"${getString(parameter.stringRes)}\"", Toast.LENGTH_SHORT).show()
                         }

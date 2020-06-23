@@ -20,7 +20,7 @@ enum class CategoryIcon(@DrawableRes val iconRes: Int) {
     PRESENTS(R.drawable.ic_category_presents),
     PETS(R.drawable.ic_category_pets),
     KIDS(R.drawable.ic_category_kids),
-    KITCHEN(R.drawable.ic_category_kitchen),
+    SMS(R.drawable.ic_category_kitchen),
     WORK(R.drawable.ic_category_work),
     POPULAR(R.drawable.ic_category_popular),
     CIGARETTES(R.drawable.ic_category_cigarettes),

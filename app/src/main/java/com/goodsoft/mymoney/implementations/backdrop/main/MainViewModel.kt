@@ -5,15 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.DiffUtil
+import com.goodsoft.mymoney.database.tables.transaction.TransactionEntity
 import com.goodsoft.mymoney.database.tables.transaction.TransactionsRoomRepository
 import com.goodsoft.mymoney.enums.TransactionType
 import com.goodsoft.mymoney.util.asDate
 import com.goodsoft.mymoney.util.asFullDate
+import com.goodsoft.mymoney.widgets.funds.Currency
+import com.goodsoft.mymoney.widgets.funds.DayAmountSpent
+import com.goodsoft.mymoney.widgets.funds.FoundsData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
+import java.util.*
 
 
 class MainViewModel : ViewModel() {
@@ -25,7 +30,7 @@ class MainViewModel : ViewModel() {
         override fun areContentsTheSame(oldItem: Any, newItem: Any) = true
     })
 
-    val isHolderVisible = MutableLiveData<Boolean>(false)
+    val isHolderVisible = MutableLiveData(false)
 
     init {
         initTransactions()
@@ -36,21 +41,9 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             TransactionsRoomRepository().getAll().collect { transactions ->
                 withContext(Dispatchers.Main) {
+                    isHolderVisible.value = transactions.isNullOrEmpty()
                     items.update(mutableListOf<Any>().apply {
-                        /*add(FoundsData(
-                                it.filter {
-                                    it.date.after(Date(Date().time - 86400000 * 6)) &&
-                                            it.date.before(Date()) &&
-                                            it.type == TransactionType.OUTCOME
-                                }.sumByDouble { it.amount }, Currency.BYN,
-                                listOf(6, 5, 4, 3, 2, 1, 0).map { day ->
-                                    val date = Date(Date().time - 86400000 * day)
-                                    DayAmountSpent(date.time, it.filter {
-                                        asDate(it.date) == asDate(date) &&
-                                                it.type == TransactionType.OUTCOME
-                                    }.sumByDouble { it.amount }, Currency.BYN)
-                                }
-                        ))*/
+                        add(getFundsData(transactions))
                         transactions.sortedByDescending { it.date }.groupBy { asFullDate(it.date) }.forEach { transactionsPerDay ->
                             add(TransactionHeaderItem(transactionsPerDay.key,
                                     transactionsPerDay.value.filter { it.type == TransactionType.INCOME }.sumByDouble { it.amount },
@@ -58,11 +51,32 @@ class MainViewModel : ViewModel() {
                             ))
                             addAll(transactionsPerDay.value)
                         }
-                        isHolderVisible.value = transactions.isNullOrEmpty()
                     })
                 }
             }
         }
+    }
+
+    private fun getFundsData(transactions: List<TransactionEntity>): FoundsData {
+        return FoundsData(
+                transactions.filter {
+                    it.date.after(Date(Date().time - 86400000 * 6)) &&
+                            it.date.before(Date()) &&
+                            it.type == TransactionType.INCOME
+                }.sumByDouble { it.amount },
+                transactions.filter {
+                    it.date.after(Date(Date().time - 86400000 * 6)) &&
+                            it.date.before(Date()) &&
+                            it.type == TransactionType.OUTCOME
+                }.sumByDouble { it.amount }, Currency.BYN,
+                listOf(6, 5, 4, 3, 2, 1, 0).map { day ->
+                    val date = Date(Date().time - 86400000 * day)
+                    DayAmountSpent(date.time, transactions.filter {
+                        asDate(it.date) == asDate(date) &&
+                                it.type == TransactionType.OUTCOME
+                    }.sumByDouble { it.amount }, Currency.BYN)
+                }
+        )
     }
 
     /** todo popular categories in progress

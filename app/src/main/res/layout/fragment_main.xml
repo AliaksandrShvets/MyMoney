@@ -30,11 +30,11 @@
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:paddingBottom="160dp"
+                app:isVisible="@{viewModel.items.size()>1}"
                 app:itemBinding="@{itemBinding}"
                 app:items="@{viewModel.items}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:isVisible="@{!viewModel.items.isEmpty()}"
-                tools:listitem="@layout/item_transaction"/>
+                tools:listitem="@layout/item_transaction" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -44,15 +44,15 @@
                 android:orientation="vertical"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                app:isVisible="@{viewModel.isHolderVisible}"
+                app:isVisible="@{viewModel.items.size()==1}"
                 tools:visibility="invisible">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_empty"
-                    android:contentDescription="@string/fragment_main_empty_list_title" />
+                    android:contentDescription="@string/fragment_main_empty_list_title"
+                    android:src="@drawable/ic_empty" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -101,28 +101,28 @@
                     app:backgroundTint="@color/colorAccent" />
             </LinearLayout>
         </FrameLayout>
-<!--
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <!--
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <include
-                layout="@layout/divider"
-                app:isVisible="@{!viewModel.favoriteCategoriesItems.isEmpty()}" />
+                    <include
+                        layout="@layout/divider"
+                        app:isVisible="@{!viewModel.favoriteCategoriesItems.isEmpty()}" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerFavoriteCategories"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="@dimen/recycler_padding"
-                android:paddingBottom="@dimen/recycler_padding"
-                app:itemBinding="@{itemBinding}"
-                app:items="@{viewModel.favoriteCategoriesItems}"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:isVisible="@{!viewModel.favoriteCategoriesItems.isEmpty()}"
-                tools:listitem="@layout/item_favorite_category" />
-        </LinearLayout>-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerFavoriteCategories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/recycler_padding"
+                        android:paddingBottom="@dimen/recycler_padding"
+                        app:itemBinding="@{itemBinding}"
+                        app:items="@{viewModel.favoriteCategoriesItems}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:isVisible="@{!viewModel.favoriteCategoriesItems.isEmpty()}"
+                        tools:listitem="@layout/item_favorite_category" />
+                </LinearLayout>-->
     </LinearLayout>
 </layout>

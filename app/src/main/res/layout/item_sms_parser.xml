@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,29 +14,48 @@
             type="com.goodsoft.mymoney.core.OnItemClickListener" />
     </data>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:onClick="@{() -> listener.onClick(smsParserItem)}"
-        android:orientation="vertical"
-        android:padding="@dimen/normal_gap">
+        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@{smsParserItem.address}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textColor="@color/colorPrimary"
-            tools:text="Some Bank" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:onClick="@{() -> listener.onClick(smsParserItem)}"
+            android:orientation="vertical"
+            android:padding="@dimen/normal_gap">
 
-        <TextView
-            android:layout_width="match_parent"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@{smsParserItem.address}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textColor="@color/colorPrimary"
+                tools:text="Some Bank" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.6"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textColor="@color/colorPrimary"
+                app:sms_parser="@{smsParserItem}"
+                tools:text="Card9977; Oplata: 22,00 BYN; 17.10.19 21:04:21; HERO PARK,MINSK,BLR; Dostupno: 9 828,49 BYN" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:alpha="0.6"
-            app:sms_parser="@{smsParserItem}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-            android:textColor="@color/colorPrimary"
-            tools:text="Card9977; Oplata: 22,00 BYN; 17.10.19 21:04:21; HERO PARK,MINSK,BLR; Dostupno: 9 828,49 BYN" />
+            android:onClick="@{(view) -> listener.onMenuClick(view, smsParserItem)}"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:src="@drawable/ic_more"
+            app:tint="@color/colorPrimary" />
     </LinearLayout>
 </layout>

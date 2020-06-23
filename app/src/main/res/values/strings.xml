@@ -64,6 +64,6 @@
     <string name="format_currency_usd__1">%.2f $</string>
     <string name="format_currency_byn__1">%.2f Br</string>
     <string name="format_currency_unknown__1">%.2f ¤</string>
-    <string name="fragment_my_funds_total_amount_title">Расходы за неделю</string>
+    <string name="fragment_my_funds_total_amount_title">Итого за неделю</string>
     <string name="fragment_my_funds_amount_title__1">Потрачено %1$s</string>
 </resources>

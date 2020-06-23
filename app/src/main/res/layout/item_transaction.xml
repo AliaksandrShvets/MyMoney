@@ -11,6 +11,8 @@
 
         <import type="com.goodsoft.mymoney.database.tables.transaction.TransactionEntity"/>
 
+        <import type="com.goodsoft.mymoney.util.AmountUtilsKt" />
+
         <variable
             name="item"
             type="TransactionEntity" />
@@ -51,7 +53,7 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:textSize="16sp"
             android:textColor="@{item.type == TransactionType.INCOME ? @color/green : @color/red}"
-            android:text="@{String.valueOf(item.amount)}"
+            android:text="@{(item.type == TransactionType.INCOME ? '+' : '-')+ AmountUtilsKt.formatAmount(context, item.amount)}"
             tools:textColor="@color/green"
             tools:text="@string/tools_amount" />
 

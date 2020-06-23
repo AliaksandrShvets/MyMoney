@@ -1,8 +1,6 @@
 package com.goodsoft.mymoney.widgets.funds
 
 import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -34,7 +32,7 @@ class FoundsView(context: Context, attrs: AttributeSet? = null) : ConstraintLayo
 
     private val chipGroup = ChipGroup(context)
     private val diagram = FoundsDiagram(context)
-    private lateinit var totalAmountText: TextView
+    private lateinit var totalIncomeText: TextView
     private lateinit var amountTitle: TextView
     private lateinit var amountText: TextView
 
@@ -76,10 +74,10 @@ class FoundsView(context: Context, attrs: AttributeSet? = null) : ConstraintLayo
         totalAmountTitle.setTextColor(textTitleColor)
         addView(totalAmountTitle, ViewGroup.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT))
 
-        totalAmountText = TextView(ContextThemeWrapper(context, textTotalAmountAppearance))
-        totalAmountText.id = ViewIdGenerator.generate()
-        totalAmountText.setTextColor(textColor)
-        addView(totalAmountText, ViewGroup.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT))
+        totalIncomeText = TextView(ContextThemeWrapper(context, textAmountAppearance))
+        totalIncomeText.id = ViewIdGenerator.generate()
+        totalIncomeText.setTextColor(textColor)
+        addView(totalIncomeText, ViewGroup.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT))
 
         val divider = View(context)
         divider.id = ViewIdGenerator.generate()
@@ -118,14 +116,14 @@ class FoundsView(context: Context, attrs: AttributeSet? = null) : ConstraintLayo
         constraintSet.connect(totalAmountTitle.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0)
         constraintSet.connect(totalAmountTitle.id, ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0)
         constraintSet.connect(totalAmountTitle.id, ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0)
-        constraintSet.connect(totalAmountTitle.id, ConstraintSet.BOTTOM, totalAmountText.id, ConstraintSet.TOP, 0)
+        constraintSet.connect(totalAmountTitle.id, ConstraintSet.BOTTOM, totalIncomeText.id, ConstraintSet.TOP, 0)
 
-        constraintSet.connect(totalAmountText.id, ConstraintSet.TOP, totalAmountTitle.id, ConstraintSet.BOTTOM, 0)
-        constraintSet.connect(totalAmountText.id, ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0)
-        constraintSet.connect(totalAmountText.id, ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0)
-        constraintSet.connect(totalAmountText.id, ConstraintSet.BOTTOM, divider.id, ConstraintSet.TOP, 0)
+        constraintSet.connect(totalIncomeText.id, ConstraintSet.TOP, totalAmountTitle.id, ConstraintSet.BOTTOM, 0)
+        constraintSet.connect(totalIncomeText.id, ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0)
+        constraintSet.connect(totalIncomeText.id, ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0)
+        constraintSet.connect(totalIncomeText.id, ConstraintSet.BOTTOM, divider.id, ConstraintSet.TOP, 0)
 
-        constraintSet.connect(divider.id, ConstraintSet.TOP, totalAmountText.id, ConstraintSet.BOTTOM, 9.px)
+        constraintSet.connect(divider.id, ConstraintSet.TOP, totalIncomeText.id, ConstraintSet.BOTTOM, 9.px)
         constraintSet.connect(divider.id, ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0)
         constraintSet.connect(divider.id, ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0)
         constraintSet.connect(divider.id, ConstraintSet.BOTTOM, diagram.id, ConstraintSet.TOP, 0)
@@ -158,7 +156,8 @@ class FoundsView(context: Context, attrs: AttributeSet? = null) : ConstraintLayo
     }
 
     private fun initAnalytics(founds: FoundsData) {
-        totalAmountText.text = context.formatAmount(founds.totalAmount, founds.currency)
+        totalIncomeText.text = "+${context.formatAmount(founds.totalIncome, founds.currency)}; -${context.formatAmount(founds.totalOutcome, founds.currency)}"
+        chipGroup.removeAllViews()
         chipGroup.post {
             for (i in founds.daysAmountSpentList.indices) {
                 val cli = LayoutInflater.from(context).inflate(R.layout.single_chip_layout, chipGroup, false) as Chip
@@ -176,8 +175,8 @@ class FoundsView(context: Context, attrs: AttributeSet? = null) : ConstraintLayo
                 cli.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 cli.setTextAppearance(chipAppearance)
                 cli.text = weekFormat.format(founds.daysAmountSpentList[i].date)
-                cli.chipStartPadding = 0f + 4.px
-                cli.chipEndPadding = 0f + 6.px
+                cli.chipStartPadding = 0f + 2.px
+                cli.chipEndPadding = 0f + 4.px
                 cli.isCheckable = true
                 cli.checkedIcon = null
                 cli.isChecked = true

@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 
 class SmsParserViewModel : ViewModel() {
     val spannableSms = ObservableField<CharSequence>()
-    val sms = ObservableField<SmsEntity>(
+    val sms = ObservableField(
             SmsEntity(
                     "Test.Kt",
                     "Big text for test. Big text for test." +

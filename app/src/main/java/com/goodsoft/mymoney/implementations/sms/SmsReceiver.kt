@@ -23,13 +23,14 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
+import java.util.regex.Pattern
 
 
 class SmsReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action.equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)) {
-            Toast.makeText(context, "sms received", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, "sms received", Toast.LENGTH_SHORT).show()
             Telephony.Sms.Intents.getMessagesFromIntent(intent).forEach { parseSms(it) }
         }
     }
@@ -53,8 +54,9 @@ class SmsReceiver : BroadcastReceiver() {
         @Suppress("UNREACHABLE_CODE")
         fun addOperation(smsParserEntity: SmsParserEntity, message: String) : List<String>{
             val result = mutableListOf<String>()
-            val messageRows = message.split("; ")
-            var isFullData = messageRows.size == smsParserEntity.body.split("; ").size
+            val messageRows = message.split(Pattern.compile("; |\\. |\\n"))
+            var isFullData = messageRows.size == smsParserEntity.body.split(Pattern.compile("; |\\. |\\n")).size
+            var amount : String? = null
             if (isFullData) {
                 val parts: HashMap<SmsParameterEnum, ExpressionEntity> = Gson().fromJson(
                         smsParserEntity.parts,
@@ -66,6 +68,9 @@ class SmsReceiver : BroadcastReceiver() {
                             isFullData = false
                             return@forEach
                         }
+                        if (part.key == SmsParameterEnum.AMOUNT) {
+                            amount = it.firstOrNull()
+                        }
                         result.addAll(it)
                     }
                 }
@@ -73,10 +78,10 @@ class SmsReceiver : BroadcastReceiver() {
             if (isFullData) {
                 TransactionsRoomRepository().insert(TransactionEntity(
                         Date(),
-                        TransactionType.INCOME,
-                        CategoryEntity("123", "${smsParserEntity.address}\n$result", CategoryIcon.CHEQUE.name),
-                        0.99,
-                        ""
+                        TransactionType.OUTCOME,
+                        CategoryEntity("123", smsParserEntity.address, CategoryIcon.SMS.name),
+                        amount?.replace(",",".")?.toDoubleOrNull() ?: 0.0,
+                        "From SMS"
                 )).subscribe({}, {})
             }
             return result
